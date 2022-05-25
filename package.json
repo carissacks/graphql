@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/carissacks/graphql.git",
   "author": "Carissa",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test:api": "yarn --cwd api test"
+  }
 }
