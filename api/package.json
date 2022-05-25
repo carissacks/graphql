@@ -12,7 +12,8 @@
     "generate:prisma": "prisma generate",
     "lint": "eslint --max-warnings 0 \"src/**/*.{ts,tsx}\"",
     "jest": "jest --coverage --passWithNoTests",
-    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest"
+    "test": "yarn lint && yarn typecheck && yarn format:check && yarn jest",
+    "seed": "ts-node --transpile-only src/seed/index.ts"
   },
   "dependencies": {
     "@graphql-yoga/node": "^2.6.0",

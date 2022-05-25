@@ -12,11 +12,11 @@ export default interface PrismaTypes {
     Include: Prisma.AuthorInclude;
     Select: Prisma.AuthorSelect;
     Where: Prisma.AuthorWhereUniqueInput;
-    Fields: 'Book';
-    RelationName: 'Book';
-    ListRelations: 'Book';
+    Fields: 'books';
+    RelationName: 'books';
+    ListRelations: 'books';
     Relations: {
-      Book: {
+      books: {
         Shape: Array<Book>;
         Types: PrismaTypes['Book'];
       };
@@ -28,15 +28,15 @@ export default interface PrismaTypes {
     Include: Prisma.BookInclude;
     Select: Prisma.BookSelect;
     Where: Prisma.BookWhereUniqueInput;
-    Fields: 'author' | 'Review';
-    RelationName: 'author' | 'Review';
-    ListRelations: 'Review';
+    Fields: 'author' | 'reviews';
+    RelationName: 'author' | 'reviews';
+    ListRelations: 'reviews';
     Relations: {
       author: {
         Shape: Author;
         Types: PrismaTypes['Author'];
       };
-      Review: {
+      reviews: {
         Shape: Array<Review>;
         Types: PrismaTypes['Review'];
       };
@@ -48,11 +48,11 @@ export default interface PrismaTypes {
     Include: Prisma.UserInclude;
     Select: Prisma.UserSelect;
     Where: Prisma.UserWhereUniqueInput;
-    Fields: 'Review';
-    RelationName: 'Review';
-    ListRelations: 'Review';
+    Fields: 'reviews';
+    RelationName: 'reviews';
+    ListRelations: 'reviews';
     Relations: {
-      Review: {
+      reviews: {
         Shape: Array<Review>;
         Types: PrismaTypes['Review'];
       };

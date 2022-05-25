@@ -16,33 +16,45 @@ datasource db {
 }
 
 model Author {
-  id   String @id @default(uuid())
-  name String
-  Book Book[]
+  id        String   @id @default(uuid())
+  name      String
+  books     Book[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt Int      @default(-1)
 }
 
 model Book {
-  id       String   @id @default(uuid())
-  title    String
-  poster   String?
-  authorId String
-  author   Author   @relation(fields: [authorId], references: [id])
-  Review   Review[]
+  id        String   @id @default(uuid())
+  title     String
+  poster    String?
+  authorId  String
+  author    Author   @relation(fields: [authorId], references: [id])
+  reviews   Review[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt Int      @default(-1)
 }
 
 model User {
-  id     String   @id @default(uuid())
-  name   String
-  Review Review[]
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  reviews   Review[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt Int      @default(-1)
 }
 
 model Review {
-  id        String    @id @default(uuid())
+  id        String   @id @default(uuid())
   content   String
   bookId    String
-  book      Book      @relation(fields: [bookId], references: [id])
+  book      Book     @relation(fields: [bookId], references: [id])
   userId    String
-  user      User      @relation(fields: [userId], references: [id])
-  createdAt DateTime  @default(now())
-  deletedAt DateTime?
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt Int      @default(-1)
 }
