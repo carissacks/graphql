@@ -1,6 +1,7 @@
 import { builder } from '../../builder';
 import { db } from '../../prisma';
 
+// Able to add more than one query using builder.queryFields
 builder.queryFields((t) => ({
   books: t.prismaField({
     description: 'Query all books',

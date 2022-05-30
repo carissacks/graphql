@@ -1,6 +1,7 @@
 import { builder } from '../../builder';
 import { db } from '../../prisma';
 
+// Only add one query using builder.queryField
 builder.queryField('authors', (t) =>
   t.prismaField({
     description: 'Query all authors',
