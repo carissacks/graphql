@@ -8,3 +8,6 @@ export const builder = new SchemaBuilder<{ PrismaTypes: PrismaTypes }>({
   plugins: [PrismaPlugin],
   prisma: { client: db.prisma },
 });
+
+builder.queryType({ description: 'Queries' });
+// builder.mutationType({});
