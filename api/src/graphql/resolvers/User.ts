@@ -20,3 +20,16 @@ builder.queryFields((t) => ({
       }),
   }),
 }));
+
+builder.mutationField('signUp', (t) =>
+  t.prismaField({
+    type: 'User',
+    args: {
+      name: t.arg.string({ required: true }),
+      email: t.arg.string({ required: true }),
+      password: t.arg.string({ required: true }),
+    },
+    resolve: (query, _root, args, _ctx, _info) =>
+      db.prisma.user.create({ ...query, data: args }),
+  }),
+);

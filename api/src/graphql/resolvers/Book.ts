@@ -44,3 +44,23 @@ builder.queryFields((t) => ({
       }),
   }),
 }));
+
+builder.mutationFields((t) => ({
+  createBook: t.prismaField({
+    description: 'Create new book',
+    type: 'Book',
+    args: {
+      title: t.arg.string({ required: true }),
+      poster: t.arg.string(),
+      genre: t.arg({ type: Genre, required: true }),
+      authorId: t.arg.string({ required: true }),
+    },
+    resolve: async (query, _root, args, _ctx, _info) => {
+      const { authorId, ...otherArgs } = args;
+      return db.prisma.book.create({
+        ...query,
+        data: { ...otherArgs, author: { connect: { id: authorId } } },
+      });
+    },
+  }),
+}));

@@ -10,3 +10,13 @@ builder.queryField('authors', (t) =>
       db.prisma.author.findMany({ ...query }),
   }),
 );
+
+builder.mutationFields((t) => ({
+  createAuthor: t.prismaField({
+    description: 'Create new author with no book',
+    type: 'Author',
+    args: { name: t.arg.string({ required: true }) },
+    resolve: async (query, _root, args, _ctx, _info) =>
+      db.prisma.author.create({ ...query, data: args }),
+  }),
+}));
