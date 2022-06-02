@@ -27,6 +27,7 @@ model Author {
 model Book {
   id        String   @id @default(uuid())
   title     String
+  genre     Genre
   poster    String?
   authorId  String
   author    Author   @relation(fields: [authorId], references: [id])
@@ -57,4 +58,12 @@ model Review {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   deletedAt Int      @default(-1)
+}
+
+enum Genre {
+  FICTION
+  ROMANCE
+  BIOGRAPHY
+  SELF_IMPROVEMENT
+  EDUCATION
 }
