@@ -10,4 +10,4 @@ export const builder = new SchemaBuilder<{ PrismaTypes: PrismaTypes }>({
 });
 
 builder.queryType({ description: 'Queries' });
-// builder.mutationType({});
+builder.mutationType({ description: 'Mutations' });
