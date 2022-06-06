@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { db } from '../prisma';
 
 import { seedAuthors } from './author';
@@ -6,17 +7,19 @@ import { seedReviews } from './review';
 import { seedUsers } from './user';
 
 async function main() {
+  console.log('Creating users');
   await seedUsers();
+  console.log('Gathering authors');
   await seedAuthors();
+  console.log('Collecting books');
   await seedBooks();
+  console.log('Asking for reviews');
   await seedReviews();
-  // eslint-disable-next-line no-console
   console.log('seeding complete');
 }
 
 main()
   .catch((e) => {
-    // eslint-disable-next-line no-console
     console.error(e);
   })
   .finally(async () => {
