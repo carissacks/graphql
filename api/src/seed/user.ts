@@ -1,3 +1,6 @@
+import { hash } from 'bcrypt';
+
+import { SALT } from '../constants/api';
 import { db } from '../prisma';
 
 const users = [
@@ -7,5 +10,12 @@ const users = [
 ];
 
 export async function seedUsers() {
-  await db.prisma.user.createMany({ data: users });
+  for (let user of users) {
+    await db.prisma.user.create({
+      data: {
+        ...user,
+        password: await hash(user.password, SALT),
+      },
+    });
+  }
 }

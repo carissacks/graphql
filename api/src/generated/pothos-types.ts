@@ -1,11 +1,28 @@
 import type {
   Prisma,
+  Token,
   Author,
   Book,
   User,
   Review,
 } from '/Users/Carissa/Documents/graphql/api/node_modules/@prisma/client';
 export default interface PrismaTypes {
+  Token: {
+    Name: 'Token';
+    Shape: Token;
+    Include: Prisma.TokenInclude;
+    Select: Prisma.TokenSelect;
+    Where: Prisma.TokenWhereUniqueInput;
+    Fields: 'user';
+    RelationName: 'user';
+    ListRelations: never;
+    Relations: {
+      user: {
+        Shape: User;
+        Types: PrismaTypes['User'];
+      };
+    };
+  };
   Author: {
     Name: 'Author';
     Shape: Author;
@@ -48,13 +65,17 @@ export default interface PrismaTypes {
     Include: Prisma.UserInclude;
     Select: Prisma.UserSelect;
     Where: Prisma.UserWhereUniqueInput;
-    Fields: 'reviews';
-    RelationName: 'reviews';
-    ListRelations: 'reviews';
+    Fields: 'reviews' | 'token';
+    RelationName: 'reviews' | 'token';
+    ListRelations: 'reviews' | 'token';
     Relations: {
       reviews: {
         Shape: Array<Review>;
         Types: PrismaTypes['Review'];
+      };
+      token: {
+        Shape: Array<Token>;
+        Types: PrismaTypes['Token'];
       };
     };
   };
