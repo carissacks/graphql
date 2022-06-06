@@ -31,7 +31,6 @@
     "eslint": "^7.32.0",
     "eslint-config-kodefox": "^1.2.0",
     "jest": "^28.1.0",
-    "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
     "prisma": "^3.14.0",
     "ts-jest": "^28.0.2",
